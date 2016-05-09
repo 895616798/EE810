@@ -10,6 +10,7 @@
 using namespace std;
 int main()
 {
+    //choose which fuction to use
     bool a=true;
     while(a){
         int c;
@@ -19,7 +20,7 @@ int main()
         cout<<"3.defferential"<<endl;
         cout<<"0.quit"<<endl;
         cin>>c;
-        if(c==3){
+        if(c==3){//do the differentiate
             cout<<"hint:enter 'quit' to exit"<<endl;
             while(true){
                 string s;
@@ -31,7 +32,7 @@ int main()
                     Differentiate differentiate(s);
             }
         }
-        if(c==2){
+        if(c==2){//do the integral
             while (true) {
                 int choose;
                 cout<<"choose the function(1 is for definite integral, 2 is for indefinite integral) ";
@@ -75,7 +76,7 @@ int main()
             return 0;
         }
     
-  if(c==1)
+  if(c==1)//do the equation
     {
         int QBchoose;
         cout<<"Please choose one kind of equation:"<<'\n'
@@ -90,7 +91,7 @@ int main()
         else if(QBchoose==3)
             funquadra();
     }
-    if(c==0)
+    if(c==0)//quit the function
     a=false;
 
     }
