@@ -1,0 +1,164 @@
+//
+//  definite and indefinite integral
+//
+//  Created by Zheyi Liu on 16/5/9.
+//  Copyright © 2016 Zheyi Liu. All rights reserved.
+//
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class DefiniteIntegral //definite integral
+{
+private:
+    int numIntervals;
+    double a;
+    double b;
+    double c;
+    double d;
+    double low;
+    double up;
+    double ans;
+    
+public:
+    DefiniteIntegral(const double & a,const double & b,const double & c,const double & d, const double & low,const double & up){
+        this->a = a;
+        this->b = b;
+        this->c = c;
+        this->d = d;
+        this->low = low;
+        this->up = up;
+        this->numIntervals = 10000;
+    }
+    
+    double trapezoidal();
+    
+    double simpson();
+};
+
+double DefiniteIntegral::trapezoidal(){
+    double dx = (up-low)/(double)numIntervals;
+    double sum = 0.0;
+    double x = low;
+    double M = 1;
+    double N = 1;
+    for (int i = 0; i < b; i++) {
+         M *= 1*low;
+    }
+    for (int i = 0; i < b; i++) {
+        N *= 1*up;
+    }
+    
+    for(int i=1; i<numIntervals; ++i){
+        
+        x += dx;
+        double L = 1;
+        for (int i = 0; i < b; i++) {
+            L *= x;
+        }
+        sum += a*L + c*x +d;
+    }
+    ans = ((a*M+c*low+d)+(a*N+c*up+d)+2*sum)*dx/2.0;
+    
+    return ans;
+}
+
+double DefiniteIntegral::simpson(){
+    double dx = (up-low)/(double)numIntervals;
+    double sum1,sum2;
+    double x = low;
+    double M = 1;
+    double N = 1;
+    for (int i = 0; i < b; i++) {
+        M *= 1*low;
+    }
+    for (int i = 0; i < b; i++) {
+        N *= 1*up;
+    }
+
+    sum1=sum2=0;
+    for(int i=1; i<numIntervals; ++i){
+        x += dx;
+        double L = 1;
+        for (int i = 0; i < b; i++) {
+            L *= x;
+        }
+        if(i%2) sum1 += a*L + c*x +d;
+        else sum2 += a*L + c*x +d;
+    }
+    ans = ((a*M+c*low+d)+(a*N+c*up+d)+4*sum1+2*sum2)*dx/3.0;
+    return ans;
+}
+
+
+class IndefiniteIntegral{
+private:
+    double coef;  //coefficient
+    
+    double expo;  //exponential
+    
+    double cons;  //constant
+public:
+    IndefiniteIntegral(double coef, double expo, double cons):coef(coef),expo(expo),cons(cons){
+        this->coef = coef/(expo+1);
+        this->expo = expo+1;
+        this->cons = cons;
+    }
+    
+    void print() {
+        
+        if (coef == 0) {
+            cout << cons<< "x" << "\n";
+        }
+        else if (cons == 0 && coef != 0 && expo != 0)
+            cout << coef << "x^" << expo << "\n";
+        else if (cons != 0 && coef != 0 && expo != 0)
+            cout << coef << "x^" << expo << "+" << cons << "x+C" <<"\n";
+    }
+    
+};
+
+int main(){
+    while (true) {
+        int choose;
+        cout<<"choose the function(1 is for definite integral, 2 is for indefinite integral) ";
+        cin>>choose;
+        
+        if (choose == 1) {
+            
+            cout<<" Use a, b, c and d to describe the equation like a*x^b+c*x+d: "<<"\n";
+            double a,b,c,d;
+            cin>>a>>b>>c>>d;
+            cout<<"Your integral equation is "<<a<<"*x^"<<b<<"+"<<c<<"x+"<<d<<"\n";
+            cout<<"Input the low bound and up bound of the integral equation:"<<"\n";
+            double low,up;
+            cin>>low>>up;
+            cout<<"Your integral interval is ["<<low<<","<<up<<"]"<<"\n";
+            DefiniteIntegral value(a,b,c,d,low,up);
+            cout <<"Method 1(trapezoidal rule):the value after integration is  "<<value.trapezoidal() << endl;
+            cout <<"Method 2(simpson's rule):the value after integration is  "<<value.simpson() << endl;
+
+        }
+            
+        else if(choose == 2){
+            
+            //ax^b+c
+            cout<< "Input the numbers to describe the equation(example: ax^b+c)" << "\n";
+            double a,b,c;
+            cin>> a >> b >> c;
+            cout<<"Your equation is   "<<a<<"x^"<<b<<"+"<<c<<"\n";
+            cout<<"The euqation after indefinite integral is"<<"\n";
+            
+            IndefiniteIntegral A(a,b,c);
+            
+            A.print();
+
+        }
+        
+        else break;
+ 
+        }
+    
+    return 0;
+}
