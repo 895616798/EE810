@@ -101,10 +101,25 @@ public:
                 cout<<")";
                 break;
             }
+             if(s[i]=='/')//(u/v)‘＝（u'v+v'u）／v^2
+            {
+                cout<<"*(";
+                string newstring1="",newstring2="";
+                for(int k=i+1;k<=s.size();k++)
+                    newstring1+=s[k];
+                cout<<newstring1<<")-";
+                for(int m=0;m<i;m++)
+                    newstring2+=s[m];
+                cout<<newstring2<<"*(";
+                Differentiate differ1(newstring1);
+                cout<<")/("<<newstring1<<")^2";
+                break;
+            }
+
         }
     }
     ~Differentiate(){}
-    bool numerical(string s,int i)
+    bool numerical(string s,int i)//is a int or not
     {
         bool num=false;
         if(s[i]=='0'||s[i]=='1'||s[i]=='2'||s[i]=='3'||s[i]=='4'||s[i]=='5'||s[i]=='6'||s[i]=='7'||s[i]=='8'||s[i]=='9')
