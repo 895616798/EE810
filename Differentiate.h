@@ -29,10 +29,10 @@ public:
             if(s[i]=='x'&&s[i+1]=='^'){
                 if(numerical(s, i+2)==true){
                     s1<<s[i+2];
-                    s1>>degree;
+                    s1>>degree;//change string to int
                     for(int j=i+3;;j++)
                     {
-                        if(numerical(s, j)==true)
+                        if(numerical(s, j)==true)//find the degree,when the degree is larger than 9
                         {
                             degree*=10;
                             stringstream s2;
@@ -43,7 +43,7 @@ public:
                         else
                             break;
                     }
-                    result=EquationDifferentiate(&s, i,degree);
+                    result=EquationDifferentiate(&s, i,degree);//do the EquationDifferentiate
                     print(result);
                 }
             }
@@ -57,19 +57,19 @@ public:
                 result=ExponentialDifferentiate(&s,i);
                 print(result);
             }
-            if(s[i]=='s')
+            if(s[i]=='s')//sinx
             {
                 result=TrigonometricDifferentiate(s, i);
                 print(result);
                 i=i+4;
             }
-            if(s[i]=='c')
+            if(s[i]=='c')//cosx
             {
                 result=TrigonometricDifferentiate(s, i);
                 print(result);
                 i=i+4;
             }
-            if(s[i]=='+')
+            if(s[i]=='+')//(u+v)'=u'+v'
             {
                 cout<<"+";
                 string newstring1="";
@@ -78,7 +78,7 @@ public:
                 Differentiate differ1(newstring1);
                 break;
             }
-            if(s[i]=='-')
+            if(s[i]=='-')//(u-v)'=u'-v'
             {
                 cout<<"-";
                 string newstring1="";
@@ -87,7 +87,7 @@ public:
                 Differentiate differ1(newstring1);
                 break;
             }
-            if(s[i]=='*')
+            if(s[i]=='*')//(u*v)'=u'v+v'u
             {
                 cout<<"*(";
                 string newstring1="",newstring2="";
