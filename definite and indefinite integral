@@ -127,7 +127,7 @@ int main(){
         
         if (choose == 1) {
             
-            cout<<" Use a, b, c and d to describe the equation like a*x^b+c*x+d: "<<"\n";
+            cout<<" Use parameters a, b, c and d to describe the equation like a*x^b+c*x+d: "<<"\n";
             double a,b,c,d;
             cin>>a>>b>>c>>d;
             cout<<"Your integral equation is "<<a<<"*x^"<<b<<"+"<<c<<"x+"<<d<<"\n";
@@ -136,19 +136,19 @@ int main(){
             cin>>low>>up;
             cout<<"Your integral interval is ["<<low<<","<<up<<"]"<<"\n";
             DefiniteIntegral value(a,b,c,d,low,up);
-            cout <<"Method 1(trapezoidal rule):the value after integration is  "<<value.trapezoidal() << endl;
-            cout <<"Method 2(simpson's rule):the value after integration is  "<<value.simpson() << endl;
+            cout <<"Method 1(trapezoidal rule):the value by integration is  "<<value.trapezoidal() << endl;
+            cout <<"Method 2(simpson's rule):the value by integration is  "<<value.simpson() << endl;
 
         }
             
         else if(choose == 2){
             
             //ax^b+c
-            cout<< "Input the numbers to describe the equation(example: ax^b+c)" << "\n";
+            cout<< "Input the parameters to describe the equation(example: ax^b+c)" << "\n";
             double a,b,c;
             cin>> a >> b >> c;
             cout<<"Your equation is   "<<a<<"x^"<<b<<"+"<<c<<"\n";
-            cout<<"The euqation after indefinite integral is"<<"\n";
+            cout<<"The euqation through indefinite integral is"<<"\n";
             
             IndefiniteIntegral A(a,b,c);
             
