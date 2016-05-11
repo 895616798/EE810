@@ -6,7 +6,7 @@
 #include <cmath>
 using namespace std;
 
-double calcoe() {
+double calcoe() {                 // put all coefficients into vector and add them together
 	vector<double> coe;
 	double i;
 	char t;
@@ -25,7 +25,7 @@ double calcoe() {
 	return sum;
 }
 
-void obyoequ() {
+void obyoequ() {                                            // e.g. ax+bx+c+d=Ax+Bx+C+D
 	cout<<"please input the coefficents of varibles of left side of equation:"<<'\n';
 	double coel=calcoe();
 	cout<<"please input the constants of left side of equation:"<<'\n';
@@ -38,16 +38,16 @@ void obyoequ() {
 	cout<<"The solution of equation is "<<sol<<'\n';
 }
 
-void obytequ() { 
-	cout<<"please input the coefficients of 2-order variables of left side of equation:"<<'\n';
+void obytequ() {                // e.g. ax^2+bx+c+ex= Ax^2+Bx+C+Ex+F
+	cout<<"please input the coefficients of quadratic variables of left side of equation:"<<'\n';
 	double coel2=calcoe();
-	cout<<"please input the coefficients of 1-order variables of left side of equation:"<<'\n';
+	cout<<"please input the coefficients of 1-degree variables of left side of equation:"<<'\n';
 	double coel1=calcoe();
 	cout<<"please input the constants of left side of equation:"<<'\n';
 	double constl=calcoe();
-	cout<<"please input the coefficients of 2-order variables of right side of equation:"<<'\n';
+	cout<<"please input the coefficients of quadratic variables of right side of equation:"<<'\n';
 	double coer2=calcoe();
-	cout<<"please input the coefficients of 1-order variables of right side of equation:"<<'\n';
+	cout<<"please input the coefficients of 1-degree variables of right side of equation:"<<'\n';
 	double coer1=calcoe();
 	cout<<"please input the constants of right side of equation:"<<'\n';
 	double constr=calcoe();
@@ -68,7 +68,7 @@ void obytequ() {
 	}
 }
 
-void tbyoequ() {
+void tbyoequ() {                 // e.g. ax+by+c=dx+ey+g  Ax+By+C=Dx+Ey+G
 	cout<<"please input the coefficients of X of left side of first equation:"<<'\n';
 	double coelx1=calcoe();
 	cout<<"please input the coefficients of Y of left side of first equation:"<<'\n';
@@ -111,8 +111,8 @@ void tbyoequ() {
 	}
 }
 
-void funmain() {
-	cout<<"welcome to magic equation calculator!"<<'\n';
+void funmain() {        // another way to calculate linear equation with one variable or two variables: let customer input all the 
+	cout<<"welcome to magic equation calculator!"<<'\n';    //coefficients and just do the operation
 	cout<<"please choose the type of equation:"<<'\n';
 	cout<<"1. Linear equation with one variable"<<'\n'
 	    <<"2. Quadratic equation with one variable"<<'\n'
