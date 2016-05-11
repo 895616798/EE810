@@ -5,7 +5,7 @@
 #include <vector>
 using namespace std;
 
-class Nod
+class Nod       // e.g. +(sb)3(n)x(x)
 {
 	private:
 		char sb;
@@ -27,22 +27,22 @@ class Nod
 			i.x='x';
 		}
 	
-		friend Nod clasi(vector<Nod>& e) {
+		friend Nod clasi(vector<Nod>& e) {                 // clasify Nods customer input and put them into different vectors
 			vector<Nod> a,b,c,d;
 			double suma=0, sumb=0, sumc=0, sumd=0;
 			for(auto y:e) {
-				if((y.sb=='+') && (y.x=='x'))
+				if((y.sb=='+') && (y.x=='x'))    // e.g. +3x
 					a.push_back(y);
-				else if((y.sb=='-') && (y.x=='x'))
+				else if((y.sb=='-') && (y.x=='x'))  // e.g. -3x
 					b.push_back(y);
-				else if((y.sb=='+') && (y.x!='x'))
+				else if((y.sb=='+') && (y.x!='x'))  // e.g. +3
 					c.push_back(y);
-				else if((y.sb=='-') && (y.x!='x'))
+				else if((y.sb=='-') && (y.x!='x'))   // e.g. -3
 					d.push_back(y);
 				else
 					cout<<"error";
 			}
-			for(auto m:a)
+			for(auto m:a)                         // add all the coefficients which are in the same vector together
 				suma+=m.n;
 			for(auto o:b)
 				sumb+=o.n;
@@ -53,7 +53,7 @@ class Nod
 				
 			Nod newe, newc;
 			double D =suma-sumb;
-			if(D>0 || D==0)
+			if(D>0 || D==0)                                  // add symbol of every Nod into their value respectively
 			{	newe.sb='+'; newe.n=D; newe.x='x'; }
 			else if(D<0)
 			{	newe.sb='-'; newe.n=-D; newe.x='x'; }
@@ -70,10 +70,10 @@ class Nod
 			e.push_back(newc);
 		}
 		
-		friend double result(vector<Nod> left, vector<Nod> right);
+		friend double result(vector<Nod> left, vector<Nod> right);  // simplify equaition and get result
  };	
  
- void set(vector<Nod>& e) {
+ void set(vector<Nod>& e) {                     // put the equation which customer input into a vector
  	while(1) {
 		char t;
 		Nod i(0,0,' ');
@@ -88,7 +88,7 @@ class Nod
 			}
 			cin.unget();
 		}
-        else if (t=='\n') {
+        else if (t=='\n') {                      // when customer input "enter" means customer finish inputing
             e.push_back(i);
             break;
 		}
