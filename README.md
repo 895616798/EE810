@@ -1,4 +1,4 @@
-# EE810 Final Project: Algebra Solver
+# EE810 Final Project: Algebra Solver (please run the main.cpp)
 The program can calculate equations easily. It has three main functions to solve differential problems, integral problems and
 multivariate equations.
 For differential part, it can do the differential of the equation has one variable with power N,trigonometric function, exponential equation and do the addition, subtraction, multiplication, and division of them.
