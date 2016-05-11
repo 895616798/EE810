@@ -1,4 +1,6 @@
 // Author : Qingbo Zhang
+// In this program, customer can input whole equation directly which is very convenient, but when coefficient is 1, 
+//"1" should be input and omittance would result in error.
 #ifndef QUA_EQU_HH_
 #define QUA_EQU_HH_
 #include <iostream>
@@ -8,7 +10,7 @@
 #include <cmath>
 using namespace std;
 
-double funsplit(string& str, double& suma, double& sumb, double& sumc) {
+double funsplit(string& str, double& suma, double& sumb, double& sumc) {   // cut whole string into several parts and put them into vector
     vector<string> substr;
     int count = 0;
     int pos = 0;
@@ -36,7 +38,7 @@ double funsplit(string& str, double& suma, double& sumb, double& sumc) {
     
 
     int size;
-    vector<string> torder,oorder,zorder;
+    vector<string> torder,oorder,zorder;     // clasify among 2-degree and 1-degree tems and constant and and put them into three vectors
     for (auto q : substr) {
     	size = q.size();
     	if(q[size-2] == '^')
@@ -71,13 +73,13 @@ double funsplit(string& str, double& suma, double& sumb, double& sumc) {
 //			w=w[0]+"1x";
 //	}
 	
-	string coet[torder.size()];
+	string coet[torder.size()];   
 	int ia=0;
 	for(auto ha : torder) {
 		coet[ia] = ha.substr(0,ha.size()-3);
 		ia++;
 	}
-	double coeT[torder.size()];
+	double coeT[torder.size()];   // convert coefficients of 2-degree terms which are strill string into double type
 	suma=0;
 	for(ia=0; ia<torder.size(); ia++) {
 		coeT[ia] = stod(coet[ia]);
@@ -123,7 +125,7 @@ double funsplit(string& str, double& suma, double& sumb, double& sumc) {
 //	cout<<endl; 
 }
 
-double result(double a, double b, double c, double d, double e, double f) {
+double result(double a, double b, double c, double d, double e, double f) {//use math formula to calculate result of equation
 	double A=a-d;
 	double B=b-e;
 	double C=c-f;
@@ -154,7 +156,7 @@ void funquadra() {
 		if(s[i] == '=')
 			m=i;
 	}
-	string left=s.substr(0,m);
+	string left=s.substr(0,m);             // cut equation into left part and right part
 	double suma,sumb,sumc,sumd,sume,sumf;
 	funsplit(left,suma,sumb,sumc);
 	string right=s.substr(m+1,len-m-1);
