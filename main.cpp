@@ -24,7 +24,7 @@ int main()
             cout<<"hint:enter 'quit' to exit"<<endl;
             while(true){
                 string s;
-                cout<<"\n"<<"please enter a equation(for example:2x^3):"<<endl;
+                cout<<"\n"<<"please enter an equation(for example:2x^3):"<<endl;
                 cin>>s;
                 if(s=="quit")
                     break;
